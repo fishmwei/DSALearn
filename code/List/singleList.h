@@ -1,7 +1,10 @@
 
 
-typedef struct {
+typedef struct Node_s {
     void *data;
-    Node *next;
+    struct Node_s *next;
 } Node;
+
+
+
 
