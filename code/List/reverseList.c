@@ -9,6 +9,7 @@
  *  gcc reverseList.c singleList.c -o a
  * 
  *  ./a
+ *  leetcode 第9题
  * 
  * */
 
