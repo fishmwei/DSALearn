@@ -6,7 +6,7 @@ typedef struct Node_s {
 } Node_t;
 
 typedef struct list {
-    Node_t *head; // 是否为空， 看情况吧
+    Node_t *head;
     Node_t *tail;
 } List_t;
 

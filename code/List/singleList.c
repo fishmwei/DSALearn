@@ -92,12 +92,20 @@ void freeList(List_t *list) {
         return;
     }
 
+    // 防止循环了， 释放不了
+    if (list->tail->next != NULL) {
+        list->tail->next = NULL;
+    }
+
     Node_t *pos = list->head;
     while (pos != NULL) {
         Node_t *next = pos->next;
+        pos->next = NULL;
         free(pos);
         pos = next;
     }
     list->head = NULL;
     list->tail = NULL;
 }
+
+
