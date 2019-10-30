@@ -8,3 +8,6 @@ typedef enum {
 
 void bubbleSort(int *datas, int size);
 
+void insertionSort(int *datas, int size);
+
+void selectSort(int *datas, int size);
