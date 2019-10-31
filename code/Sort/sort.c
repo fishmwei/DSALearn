@@ -1,4 +1,5 @@
 #include "sort.h"
+#include <memory.h>
 
 void bubbleSort(int *datas, int size) {
     if (!datas || size <= 1) {
@@ -74,4 +75,51 @@ void selectSort(int *datas, int size) {
         datas[i] = datas[minIndex];
         datas[minIndex] = temp;
     }
+}
+
+
+void merge(int *datas, int p, int q, int r) {
+    int i = p;
+    int j = q + 1;
+    int k = 0;
+
+    int *temp = (int *)malloc(sizeof(int) * (r-p));
+    memset(temp, 0, sizeof(int) * (r-p));
+    while (i <= q && j <= r) {
+        if (datas[i] > datas[j]) {
+            temp[k++] = datas[j++];
+        } else {
+            temp[k++] = datas[i++];
+        }
+    }
+
+    while (i <= q) {
+        temp[k++] = datas[i++];
+    }
+
+    while (j <= r) {
+        temp[k++] = datas[j++];
+    }
+
+    for (int m = 0; m <= r-p; m++) {
+        datas[p+m] = temp[m];
+    }
+
+    free(temp);
+}
+
+void mergeSortPart(int *datas, int p, int r) {
+    if (p >= r) {
+        return;
+    }
+
+    int q = (p + r) / 2;
+    mergeSortPart(datas, p, q);
+    mergeSortPart(datas, q+1, r);
+
+    merge(datas, p, q, r);
+}
+
+void mergeSort(int *datas, int size) {
+    mergeSortPart(datas, 0, size-1);
 }

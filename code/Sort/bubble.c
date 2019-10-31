@@ -17,7 +17,7 @@ int main() {
     }
     printf("\r\n");
 
-    selectSort(datas, size);
+    mergeSort(datas, size);
     
     for (int i = 0; i < size; i++) {
         printf("%d ", datas[i]);
