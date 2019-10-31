@@ -17,7 +17,7 @@ int main() {
     }
     printf("\r\n");
 
-    mergeSort(datas, size);
+    quickSort(datas, size);
     
     for (int i = 0; i < size; i++) {
         printf("%d ", datas[i]);

@@ -123,3 +123,36 @@ void mergeSortPart(int *datas, int p, int r) {
 void mergeSort(int *datas, int size) {
     mergeSortPart(datas, 0, size-1);
 }
+
+int partation(int *datas, int p, int r) {
+    int pv = datas[r];
+    int i = p;
+    for (int j = p; j < r-1; j++) {
+        if (datas[j] < pv) {
+            int temp = datas[i];
+            datas[i] = datas[j];
+            datas[j] = temp;
+            i++;
+        }
+    }
+
+    int temp = datas[r];
+    datas[r] = datas[i];
+    datas[i] = temp;
+
+    return i;
+}
+
+void quickSortRange(int *datas, int p, int r) {
+    if (p >= r) {
+        return;
+    }
+
+    int q = partation(datas, p, r);
+    quickSortRange(datas, p, q-1); // q的位置已经确定了
+    quickSortRange(datas, q+1, r);
+}
+
+void quickSort(int *datas, int size) {
+    quickSortRange(datas, 0, size-1);
+}
